@@ -1,7 +1,6 @@
 import { BrowserWindow } from "electron";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
-import { cpus } from "os";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 process.env.APP_ROOT = path.join(__dirname, "..");
@@ -16,18 +15,24 @@ process.env.VITE_PUBLIC = VITE_DEV_SERVER_URL
 
 export function createWindow() {
   const win = new BrowserWindow({
+    width: 200,
+    height: 300,
+    frame: false,
+    transparent: true,
+    resizable: false,
+    alwaysOnTop: true,
     webPreferences: {
       preload: path.join(__dirname, "preload.mjs"),
     },
   });
-  win.webContents.openDevTools();
+  win.webContents.openDevTools({
+    mode: "detach",
+  });
   win.removeMenu();
   if (VITE_DEV_SERVER_URL) {
     win.loadURL(VITE_DEV_SERVER_URL);
   } else {
     win.loadFile(path.join(RENDERER_DIST, "index.html"));
   }
-  win.webContents.on("did-finish-load", () => {
-    win?.webContents.send("main-process-message", cpus()[0]);
-  });
+  return win;
 }
