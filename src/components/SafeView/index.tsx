@@ -8,12 +8,13 @@ export default function SafeView({ children }: SafeViewProps) {
   return (
     <div
       className="
-  w-screen 
-  h-screen 
-  flex
-  gap-1
-  flex-col
-  "
+      p-1
+      flex
+      gap-1
+      flex-col
+      h-screen 
+      w-screen 
+      "
     >
       {children}
     </div>
