@@ -15,7 +15,7 @@ function App() {
     <div className="bg-red-400 w-screen h-screen flex flex-col items-center justify-center">
       <p>{model}</p>
       <button
-        className="bg-blue-100 p-4 rounded-xl"
+        className="bg-blue-100 p-2 px-4 rounded-xl"
         onClick={() => setCount(count + 1)}
       >
         Counter on: {count}
