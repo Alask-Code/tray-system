@@ -3,6 +3,7 @@
 *{
   @apply text-zinc-50;
   font-family: 'Inter';
+  user-select: none;
 }
 .draggable{
   -webkit-app-region:drag;

@@ -1,14 +1,17 @@
+import type { CpuInfo } from "os";
+import { useCpuInfo } from "../../hooks/useCpuInfo";
 export default function CpuInfo() {
+  const cpuName = useCpuInfo();
+
   return (
-    <div className="p-2 bg-zinc-600 border border-zinc-400 rounded-lg">
-      <h1>
-        <i className="ph ph-cpu pr-1" />
-        i9-10900K
+    <div className="p-2 gap-2 flex flex-col bg-zinc-600 border border-zinc-400 rounded-lg">
+      <h1 className="text-xs gap-1 flex items-center">
+        <i className="ph ph-cpu" />
+        {cpuName}
       </h1>
-      <div>
-        <p>CPU Speed</p>
-        <p>CPU Speed</p>
-        <p>CPU Speed</p>
+      <div className="text-sm">
+        <p>Utilization</p>
+        <p>Speed</p>
       </div>
     </div>
   );
