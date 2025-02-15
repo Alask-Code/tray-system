@@ -1,7 +1,7 @@
 import type { CpuInfo } from "os";
 import { useCpuInfo } from "../../hooks/useCpuInfo";
 export default function CpuInfo() {
-  const cpuName = useCpuInfo();
+  const { cpuName, cpuLoad, cpuSpeed } = useCpuInfo();
 
   return (
     <div className="p-2 gap-2 flex flex-col bg-zinc-600 border border-zinc-400 rounded-lg">
@@ -10,8 +10,8 @@ export default function CpuInfo() {
         {cpuName}
       </h1>
       <div className="text-sm">
-        <p>Utilization</p>
-        <p>Speed</p>
+        <p>Load: {cpuLoad}</p>
+        <p>Speed: {cpuSpeed}</p>
       </div>
     </div>
   );
